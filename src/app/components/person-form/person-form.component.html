@@ -8,7 +8,7 @@
     <br>
     <form (ngSubmit)="onSubmit()">
       <mat-form-field appearance="fill">
-        <mat-label>Name</mat-label>
+        <mat-label>Nome</mat-label>
         <input matInput [(ngModel)]="person.nome" name="nome" required />
         <mat-error *ngIf="nameError">{{ nameError }}</mat-error>
       </mat-form-field>
@@ -26,7 +26,7 @@
       </mat-form-field>
 
       <mat-form-field appearance="fill">
-        <mat-label>Date of Birth</mat-label>
+        <mat-label>Data de nascimento</mat-label>
         <input matInput type="date" [(ngModel)]="person.dataNascimento" name="dataNascimento" required />
         <mat-error *ngIf="dateError">{{ dateError }}</mat-error>
       </mat-form-field>

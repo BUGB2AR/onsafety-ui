@@ -1,5 +1,5 @@
 <div class="container">
-    <!-- Card for error messages -->
+
     <mat-card *ngIf="errorMessage" class="error-card">
       <mat-card-content>
         {{ errorMessage }}
@@ -8,33 +8,33 @@
   
     <form (ngSubmit)="onUpdate()">
       <mat-form-field appearance="fill">
-        <mat-label>Name</mat-label>
+        <mat-label>Nome</mat-label>
         <input matInput [(ngModel)]="person.nome" name="nome" required />
-        <mat-error *ngIf="!person.nome">Name is required</mat-error>
+        <mat-error *ngIf="!person.nome">Nome deve ser informado</mat-error>
       </mat-form-field>
   
       <mat-form-field appearance="fill">
         <mat-label>Email</mat-label>
         <input matInput [(ngModel)]="person.email" name="email" required />
-        <mat-error *ngIf="!person.email">Email is required</mat-error>
-        <mat-error *ngIf="person.email && !isEmailValid(person.email)">Invalid email address</mat-error>
+        <mat-error *ngIf="!person.email">Email deve ser informado</mat-error>
+        <mat-error *ngIf="person.email && !isEmailValid(person.email)">Email Invalido</mat-error>
       </mat-form-field>
   
       <mat-form-field appearance="fill">
         <mat-label>CPF</mat-label>
         <input matInput [(ngModel)]="person.cpf" name="cpf" appCpfFormFormatter maxlength="14" required />
         <mat-error *ngIf="!person.cpf">CPF is required</mat-error>
-        <mat-error *ngIf="person.cpf && !isCpfValid(person.cpf)">Invalid CPF</mat-error>
+        <mat-error *ngIf="person.cpf && !isCpfValid(person.cpf)">Cpf Invalido</mat-error>
       </mat-form-field>
   
       <mat-form-field appearance="fill">
-        <mat-label>Date of Birth</mat-label>
+        <mat-label>Data de nascimento</mat-label>
         <input matInput type="date" [(ngModel)]="person.dataNascimento" name="dataNascimento" required />
-        <mat-error *ngIf="!person.dataNascimento">Date of birth is required</mat-error>
+        <mat-error *ngIf="!person.dataNascimento">Data de nascimento deve ser informada</mat-error>
       </mat-form-field>
   
       <div class="button-container">
-        <button mat-raised-button color="primary" type="submit">Update</button>
+        <button mat-raised-button color="primary" type="submit">Editar</button>
       </div>
     </form>
   </div>
