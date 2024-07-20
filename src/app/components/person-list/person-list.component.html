@@ -1,0 +1,45 @@
+<div class="container">
+    <div class="mat-elevation-z8 table-container">
+      <mat-table [dataSource]="dataSource" class="mat-table">
+     
+        <ng-container matColumnDef="id">
+          <mat-header-cell *matHeaderCellDef> ID </mat-header-cell>
+          <mat-cell *matCellDef="let person"> {{person.id}} </mat-cell>
+        </ng-container>
+  
+        <ng-container matColumnDef="name">
+          <mat-header-cell *matHeaderCellDef> Nome </mat-header-cell>
+          <mat-cell *matCellDef="let person"> {{person.nome}} </mat-cell>
+        </ng-container>
+  
+    
+        <ng-container matColumnDef="email">
+          <mat-header-cell *matHeaderCellDef> Email </mat-header-cell>
+          <mat-cell *matCellDef="let person"> {{person.email}} </mat-cell>
+        </ng-container>
+  
+     
+        <ng-container matColumnDef="cpf">
+            <mat-header-cell *matHeaderCellDef> CPF </mat-header-cell>
+            <mat-cell *matCellDef="let person" [appCpfFormatter]="person.cpf"></mat-cell>
+          </ng-container>
+  
+        <ng-container matColumnDef="actions">
+          <mat-header-cell *matHeaderCellDef> Acoes </mat-header-cell>
+          <mat-cell *matCellDef="let person">
+            <button mat-button [routerLink]="['/persons', person.id]">Editar</button>
+            <button mat-button color="warn" (click)="deletePerson(person.id)">Remover</button>
+          </mat-cell>
+        </ng-container>
+  
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+      </mat-table>
+    </div>
+  
+    <div class="button-container">
+      <button mat-raised-button color="primary" [routerLink]="['/persons/new']">Adicionar Novas Pessoas</button>
+    </div>
+
+  </div>
+  

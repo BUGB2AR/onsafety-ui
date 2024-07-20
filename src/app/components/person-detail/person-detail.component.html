@@ -1,0 +1,41 @@
+<div class="container">
+    <!-- Card for error messages -->
+    <mat-card *ngIf="errorMessage" class="error-card">
+      <mat-card-content>
+        {{ errorMessage }}
+      </mat-card-content>
+    </mat-card>
+  
+    <form (ngSubmit)="onUpdate()">
+      <mat-form-field appearance="fill">
+        <mat-label>Name</mat-label>
+        <input matInput [(ngModel)]="person.nome" name="nome" required />
+        <mat-error *ngIf="!person.nome">Name is required</mat-error>
+      </mat-form-field>
+  
+      <mat-form-field appearance="fill">
+        <mat-label>Email</mat-label>
+        <input matInput [(ngModel)]="person.email" name="email" required />
+        <mat-error *ngIf="!person.email">Email is required</mat-error>
+        <mat-error *ngIf="person.email && !isEmailValid(person.email)">Invalid email address</mat-error>
+      </mat-form-field>
+  
+      <mat-form-field appearance="fill">
+        <mat-label>CPF</mat-label>
+        <input matInput [(ngModel)]="person.cpf" name="cpf" appCpfFormFormatter maxlength="14" required />
+        <mat-error *ngIf="!person.cpf">CPF is required</mat-error>
+        <mat-error *ngIf="person.cpf && !isCpfValid(person.cpf)">Invalid CPF</mat-error>
+      </mat-form-field>
+  
+      <mat-form-field appearance="fill">
+        <mat-label>Date of Birth</mat-label>
+        <input matInput type="date" [(ngModel)]="person.dataNascimento" name="dataNascimento" required />
+        <mat-error *ngIf="!person.dataNascimento">Date of birth is required</mat-error>
+      </mat-form-field>
+  
+      <div class="button-container">
+        <button mat-raised-button color="primary" type="submit">Update</button>
+      </div>
+    </form>
+  </div>
+  
